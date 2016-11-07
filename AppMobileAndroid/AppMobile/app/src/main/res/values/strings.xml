@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GPS locations</string>
+    <string name="location_type">Location type</string>
+    <string name="location_name">Location name</string>
+    <string name="spinner_type_location">Other</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="request_submitted">Request submitted.</string>
+    <string name="back">Back</string>
+</resources>

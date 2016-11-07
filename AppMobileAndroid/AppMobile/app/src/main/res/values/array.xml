@@ -1,0 +1,9 @@
+<resources>
+    <string-array name="spinnerTypeLocation">
+        <item>Other</item>
+        <item>Pharmacy</item>
+        <item>Taxi station</item>
+        <item>Bus station</item>
+        <item>Supermarket</item>
+    </string-array>
+</resources>
