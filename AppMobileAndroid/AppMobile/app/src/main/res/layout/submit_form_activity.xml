@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/textLocationType"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/location_type"
+                android:textColor="@color/colorFormText" />
+
+            <Spinner
+                android:id="@+id/spinnerLocationType"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:prompt="@string/spinner_type_location"
+                android:entries="@array/spinnerTypeLocation"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/textLocationName"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/location_name"
+                android:textColor="@color/colorFormText" />
+
+            <EditText
+                android:id="@+id/editTextLocationName"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1.5"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:backgroundTint="@color/colorBlack"
+                android:textCursorDrawable="@color/colorBlack"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/textDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/description"
+                android:textColor="@color/colorFormText" />
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1.5"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:backgroundTint="@color/colorBlack"
+                android:textCursorDrawable="@color/colorBlack"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:textSize="20sp"
+                android:onClick="sendRequest"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
