@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SubmitFormActivity" />
-        <activity android:name=".OpenLocationActivity"></activity>
+        <activity android:name=".OpenLocationActivity" />
+        <activity android:name=".EditLocationActivity"></activity>
     </application>
 
 </manifest>
