@@ -21,27 +21,6 @@
             android:layout_marginBottom="5dp">
 
             <TextView
-                android:id="@+id/textSubmitForm"
-                android:layout_width="0px"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:text="@string/submit"
-                android:textAlignment="center"
-                android:textColor="@color/colorFormText"
-                android:onClick="openForm" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-
-            <TextView
                 android:id="@+id/textList"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"

@@ -19,6 +19,16 @@ public class Location
         m_coordinateY=0;
     }
 
+    public Location(String f_type, String f_name, String f_description,double f_coordinateX, double f_coordinateY)
+    {
+        m_ID=0;
+        m_type=f_type;
+        m_name=f_name;
+        m_description=f_description;
+        m_coordinateX=f_coordinateX;
+        m_coordinateY=f_coordinateY;
+    }
+
     public Location(int f_ID, String f_type, String f_name, String f_description,double f_coordinateX, double f_coordinateY)
     {
         m_ID=f_ID;

@@ -1,6 +1,11 @@
 package com.appmobile;
 
 import com.facebook.react.ReactActivity;
+import org.pgsqlite.SQLitePluginPackage;
+import com.facebook.react.ReactPackage;
+import java.util.List;
+import com.facebook.react.shell.MainReactPackage;
+import java.util.Arrays;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +16,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "AppMobile";
+    }
+	
+	//@Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+        new SQLitePluginPackage(),   // register SQLite Plugin here
+        new MainReactPackage());
     }
 }

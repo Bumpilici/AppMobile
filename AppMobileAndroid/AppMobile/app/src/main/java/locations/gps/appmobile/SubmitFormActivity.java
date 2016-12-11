@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import locations.gps.appmobile.database.SQLDatabase;
+import locations.gps.appmobile.domain.Location;
+
 public class SubmitFormActivity extends AppCompatActivity {
 
     @Override
@@ -41,27 +44,13 @@ public class SubmitFormActivity extends AppCompatActivity {
         l_email.putExtra(Intent.EXTRA_SUBJECT, l_subjectEmail);
         l_email.putExtra(Intent.EXTRA_TEXT, l_bodyEmail);
 
-        try
-        {
-            startActivity(l_email);
-            AlertDialog l_alertDialog = new AlertDialog.Builder(SubmitFormActivity.this).create();
-            l_alertDialog.setTitle("Submit");
-            l_alertDialog.setMessage("Request submitted!");
-            l_alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                    new DialogInterface.OnClickListener()
-                    {
-                        public void onClick(DialogInterface f_dialog, int f_which)
-                        {
-                            f_dialog.dismiss();
+        SQLDatabase l_sqlDatabase = new SQLDatabase(this);
+        l_sqlDatabase.createLocation(new Location("Pharmacy", "Farmacia CATENA", "Farmacie nonstop", 0, 0));
 
-                            finish();
-                        }
-                    });
-            l_alertDialog.show();
-        }
-        catch (android.content.ActivityNotFoundException f_exception)
-        {
-            Toast.makeText(SubmitFormActivity.this, "The email is invalid!", Toast.LENGTH_SHORT).show();
-        }
+        startActivity(l_email);
+        finish();
+
+        Intent l_locationIntent = new Intent(this, OpenLocationActivity.class);
+        startActivity(l_locationIntent);
     }
 }

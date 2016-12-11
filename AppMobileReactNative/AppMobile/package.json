@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "0.36.1",
-    "react-native-spinner-android": "^1.0.1"
+    "react-native-spinner-android": "^1.0.1",
+    "react-native-sqlite-storage": "^3.1.2"
   },
   "jest": {
     "preset": "jest-react-native"

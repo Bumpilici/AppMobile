@@ -11,20 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import locations.gps.appmobile.database.SQLDatabase;
+
 public class MainActivity extends AppCompatActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-    }
-
-    public void openForm(View view)
-    {
-        Intent l_submitFormActivity = new Intent(this, SubmitFormActivity.class);
-        startActivity(l_submitFormActivity);
     }
 
     public void openLocation(View view)

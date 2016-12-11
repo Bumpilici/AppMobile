@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import SQLite from 'react-native-sqlite-storage';
+
 import 
 {
 	 AppRegistry,

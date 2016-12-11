@@ -1,5 +1,6 @@
 package locations.gps.appmobile;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
@@ -19,30 +20,18 @@ import locations.gps.appmobile.domain.Location;
 
 public class OpenLocationActivity extends AppCompatActivity
 {
-    /*private Location[] l_locations = {
-            new Location(0, "Farmacie", "Farmacia CATENA", "Farmacie de cartier.", 0, 0),
-            new Location(1, "Farmacie", "Farmacia RICHTER", "Farmacie de cartier.", 0, 0),
-            new Location(2, "Supermarket", "Market", "Magazin de cartier.", 0, 0)
-    };*/
-
     private void createLayout()
     {
         LinearLayout l_linearLayout = (LinearLayout)findViewById(R.id.mainLocationList);
         List<LinearLayout> l_linearLayoutLocations = new ArrayList<>();
-        List<Location> l_locations = new SQLDatabase().demo(this);
+        SQLDatabase l_sqlDatabase = new SQLDatabase(this);
+        List<Location> l_locations = l_sqlDatabase.getLocations();
 
         for (int i=0;i<l_locations.size();i++)
         {
             l_linearLayoutLocations.add(new LinearLayout(this));
             l_linearLayoutLocations.get(l_linearLayoutLocations.size() - 1).setOrientation(LinearLayout.VERTICAL);
             l_linearLayoutLocations.get(l_linearLayoutLocations.size() - 1).setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            /*TextView l_idTextView = new TextView(this);
-            l_idTextView.setEnabled(false);
-            l_idTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            l_idTextView.setTextSize(20);
-            l_idTextView.setText(Integer.toString(l_locations[i].getID()));
-            l_linearLayoutLocations.get(l_linearLayoutLocations.size() - 1).addView(l_idTextView);*/
 
             EditText l_typeTextView = new EditText(this);
             l_typeTextView.setId(l_locations.get(i).getID());
@@ -75,6 +64,7 @@ public class OpenLocationActivity extends AppCompatActivity
             l_buttonLinearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             l_buttonLinearLayout.setOrientation(LinearLayout.VERTICAL);
             l_buttonLinearLayout.setGravity(Gravity.CENTER);
+
             Button l_editButton = new Button(this);
             l_editButton.setId(l_locations.get(i).getID());
             l_editButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -88,25 +78,24 @@ public class OpenLocationActivity extends AppCompatActivity
                 }
             });
             l_buttonLinearLayout.addView(l_editButton);
+
+            Button l_deleteButton = new Button(this);
+            l_deleteButton.setId(l_locations.get(i).getID());
+            l_deleteButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            l_deleteButton.setText("DELETE");
+            l_deleteButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    delete(v);
+                }
+            });
+            l_buttonLinearLayout.addView(l_deleteButton);
+
             l_linearLayoutLocations.get(l_linearLayoutLocations.size() - 1).addView(l_buttonLinearLayout);
 
             l_linearLayout.addView(l_linearLayoutLocations.get(l_linearLayoutLocations.size() - 1));
-        }
-    }
-
-    public void setLocation(int f_ID, Location f_location)
-    {
-        List<Location> l_locations = new SQLDatabase().demo(this);
-        for (Location l_location: l_locations)
-        {
-            if(l_location.getID()==f_ID)
-            {
-                l_location.setName(f_location.getName());
-                l_location.setType(f_location.getType());
-                l_location.setDescription(f_location.getDescription());
-
-                break;
-            }
         }
     }
 
@@ -119,14 +108,33 @@ public class OpenLocationActivity extends AppCompatActivity
         createLayout();
     }
 
+    public void addLocation(View f_view)
+    {
+        Intent l_submitFormActivity = new Intent(this, SubmitFormActivity.class);
+        startActivity(l_submitFormActivity);
+    }
+
     public void edit(View v)
     {
-        int l_ID=v.getId();
+        int l_ID = v.getId();
 
-        Location l_location;
+        SQLDatabase l_sqlDatabase = new SQLDatabase(this);
+        EditLocationActivity.setID(l_ID);
 
-        //Intent l_editIntent=new Intent(this, EditLocationActivity.class);
-        //startActivity(l_editIntent);
+        Intent l_editLocationIntent = new Intent(this, EditLocationActivity.class);
+        startActivity(l_editLocationIntent);
+    }
+
+    public void delete(View view)
+    {
+        int l_ID = view.getId();
+
+        SQLDatabase l_sqlDatabase = new SQLDatabase(this);
+        l_sqlDatabase.deleteLocation(l_ID);
+        finish();
+
+        Intent l_locationIntent = new Intent(this, OpenLocationActivity.class);
+        startActivity(l_locationIntent);
     }
 
     public void update(View view)
