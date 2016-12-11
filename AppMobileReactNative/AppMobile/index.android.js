@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import SQLite from 'react-native-sqlite-storage';
-
 import 
 {
 	 AppRegistry,
@@ -17,6 +15,7 @@ from 'react-native';
 
 import { SubmitForm } from './submitForm.js';
 import { FirstPage } from './firstPage.js';
+import { Locations } from './location.js';
 
 const styles = StyleSheet.create({
 	
@@ -115,9 +114,9 @@ export default class AppMobile extends Component
 												}}
 									/>
 						}
-						else
+						else if (route.index === 1)
 						{
-							return <SubmitForm
+							return <Locations
 								onBack = {() => 
 												{
 													if (route.index > 0)
@@ -126,6 +125,18 @@ export default class AppMobile extends Component
 													}
 												}} 
 							/>
+						}
+						else if (route.index === 2)
+						{
+							return <Locations
+								onBack = {() => 
+												{
+													if (route.index > 0)
+													{
+														navigator.pop();
+													}
+												}} 
+							/> 
 						}
 					}}
 			/>
